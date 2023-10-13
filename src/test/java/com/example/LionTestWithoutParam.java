@@ -12,9 +12,10 @@ public class LionTestWithoutParam {
     @Mock
     Feline feline;
     @Test
-    public void CheckDoesHaveManeWithThrow() throws Exception {
+    public void checkDoesHaveManeWithThrow() throws Exception {
         try{
         Lion lion = new Lion(feline, "неведома зверушка");
+        lion.doesHaveMane();
         }catch (Exception exception){
         String expected ="Используйте допустимые значения пола животного - самец или самка";
         String actual = exception.getMessage();

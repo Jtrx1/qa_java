@@ -3,6 +3,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
+import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.mockito.Spy;
 
@@ -23,21 +25,22 @@ public class LionTestWithParam {
         return new Object[][] {
                 {"Самец", true},
                 {"Самка", false},
-                {"Кто-то", true},
-                {"Кто-то", false},
+                //{"Кто-то", true},
+                //{"Кто-то", false},
         };
     }
     @Before
     public void init() {
         MockitoAnnotations.initMocks(this);
     }
-    @Spy
+    @Mock
     Feline feline;
 
     @Test
     public void checkGetKittens() throws Exception {
         Lion lion = new Lion(feline, sex);
         int expected = 1;
+        Mockito.when(feline.getKittens()).thenReturn(expected);
         int actual = lion.getKittens();
         assertEquals(expected, actual);
     }
@@ -45,6 +48,7 @@ public class LionTestWithParam {
     public void checkGetFood() throws Exception {
         Lion lion = new Lion(feline, sex);
         List<String> expected = List.of("Животные", "Птицы", "Рыба");
+        Mockito.when(feline.getFood("Хищник")).thenReturn(expected);
         List<String> actual =lion.getFood();
         assertEquals(expected, actual);
     }
