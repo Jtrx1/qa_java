@@ -12,7 +12,7 @@ public class LionTestWithoutParam {
     @Mock
     Feline feline;
     @Test
-    public void checkDoesHaveManeWithThrow() throws Exception {
+    public void checkDoesHaveManeWithThrow() {
         try{
         Lion lion = new Lion(feline, "неведома зверушка");
         lion.doesHaveMane();

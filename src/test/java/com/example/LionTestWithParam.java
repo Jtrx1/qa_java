@@ -6,8 +6,6 @@ import org.junit.runners.Parameterized;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
-import org.mockito.Spy;
-
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -16,7 +14,7 @@ public class LionTestWithParam {
     String sex;
     boolean hasMane;
 
-    public LionTestWithParam(String sex, boolean hasMane) throws Exception {
+    public LionTestWithParam(String sex, boolean hasMane){
         this.sex = sex;
         this.hasMane = hasMane;
     }
@@ -25,8 +23,6 @@ public class LionTestWithParam {
         return new Object[][] {
                 {"Самец", true},
                 {"Самка", false},
-                //{"Кто-то", true},
-                //{"Кто-то", false},
         };
     }
     @Before
